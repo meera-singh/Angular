@@ -1,0 +1,68 @@
+
+
+
+<div class='card'>
+  <div class='card-header'>
+      Product list component
+      <br>
+   {{pageTitle| uppercase}}
+   
+  </div></div>
+  <span style= "color :blue"> Search item : {{search}}</span>
+  <hr>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-2">Filter By:</div>
+      <div class="col-md-4">
+        <input type="text" />
+      </div>
+      <h2>Filtered By:</h2>
+      <h2 *ngIf = 'showValue'>Some Data</h2>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            <button class="btn btn-primary">
+            Image
+            </button>
+          </th>
+          <th>
+            Product
+          </th>
+  
+          <th>Code</th>
+          <th>Available</th>
+          <th>Price</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+  
+        <tr *ngFor="let product of productlist" > 
+          <!-- <td> -->
+            <!-- <img *ngIf ='showImage'
+             [src] ='product.imageUrl'
+            [title] ='product.productName'
+            [style.width.px]= imageWidth
+            [style.margin.px]= imageHeight > -->
+          <!-- </td> -->
+          <h3 (click) = 'onclick(product.productName)'>{{product.productName | lowercase}}</h3>
+          <td>{{product.productName | lowercase}}</td>
+          <td>{{product.productCode }}</td>
+          <td>{{product.releaseDate}}</td>
+          <td>{{product.price | yearTransform:100}}</td>
+          <td>{{product.starRating}}</td> -->
+  
+        </tr>
+  
+  
+      </tbody>
+  
+    </table>
+    
+  </div>
+  <!-- <div>{{products}}</div> -->
