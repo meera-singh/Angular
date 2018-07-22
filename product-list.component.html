@@ -8,7 +8,8 @@
    {{pageTitle| uppercase}}
    
   </div></div>
-  <span style= "color :blue"> Search item : {{search}}</span>
+  Search item :  <input type="text" style="color : blue" [(ngModel)] = 'filterParam'>
+  productFiltered: {{filterParam}}
   <hr>
   <div class="card-body">
     <div class="row">
@@ -16,8 +17,8 @@
       <div class="col-md-4">
         <input type="text" />
       </div>
-      <h2>Filtered By:</h2>
-      <h2 *ngIf = 'showValue'>Some Data</h2>
+      <!-- <h2>Filtered By:</h2>
+      <h2 *ngIf = 'showValue'>Some Data</h2> -->
     </div>
   </div>
   <div class="table-responsive">
@@ -42,7 +43,7 @@
   
       <tbody>
   
-        <tr *ngFor="let product of productlist" > 
+        <tr *ngFor="let product of filteredProductList" > 
           <!-- <td> -->
             <!-- <img *ngIf ='showImage'
              [src] ='product.imageUrl'
@@ -50,8 +51,9 @@
             [style.width.px]= imageWidth
             [style.margin.px]= imageHeight > -->
           <!-- </td> -->
-          <h3 (click) = 'onclick(product.productName)'>{{product.productName | lowercase}}</h3>
-          <td>{{product.productName | lowercase}}</td>
+          <td></td> 
+          <!-- (click) = 'onclick(product.productName)'>{{product.productName | lowercase}} -->
+          <td (click) = 'onclick(product.productName)'>{{product.productName | lowercase}}</td>
           <td>{{product.productCode }}</td>
           <td>{{product.releaseDate}}</td>
           <td>{{product.price | yearTransform:100}}</td>

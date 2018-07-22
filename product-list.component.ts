@@ -17,14 +17,34 @@ export class ProductListComponent implements OnInit {
     console.log(title);
     this.titleClicked.emit(title);
   }
-  constructor(private productlistdata: ProductlistService) { }
-  productlist: IProduct[] = []
+  constructor(private productlistdata: ProductlistService) { 
+  //productlist: IProduct[] = []
+  this.filterParam = ''
+  }
 
   ngOnInit() {
-    this.productlist = this.productlistdata.getProduct()
+    this.productList = this.productlistdata.getProduct()
+    //console.log(this)
+    this.filteredProductList = this.productList;
+  };
+  _listFilter = '';
+  get filterParam (){
+    return this._listFilter;
   }
+   set filterParam(value:string){
+   this._listFilter = value;
+   this.filteredProductList = this.filterParam ? this.filterFunction(this.filterParam):this.productList;
+   }
   pageTitle = 'Product list';
   showValue = false;
+// filterlogic
+filterFunction(filterBy){
+  filterBy = filterBy.toLowerCase();
+  return this.productList.filter((product)=>
+  product.productName.toLowerCase().indexOf(filterBy) != -1)
+
+}
+
   }
 
 
